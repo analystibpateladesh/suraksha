@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <style name="Theme.Suraksha" parent="Theme.MaterialComponents.DayNight.NoActionBar">
+        <item name="colorPrimary">#ff4b4b</item>
+        <item name="colorPrimaryVariant">#dc2626</item>
+        <item name="colorOnPrimary">#ffffff</item>
+        <item name="android:windowBackground">#0a0a0a</item>
+        <item name="android:statusBarColor">#0a0a0a</item>
+        <item name="android:navigationBarColor">#161616</item>
+    </style>
+</resources>

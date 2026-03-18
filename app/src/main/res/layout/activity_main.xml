@@ -1,0 +1,599 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#080808">
+
+    <!-- ══════════════ HOME SCREEN ══════════════ -->
+    <ScrollView android:id="@+id/screenHome"
+        android:layout_width="match_parent" android:layout_height="0dp"
+        android:background="#080808" android:paddingBottom="72dp"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toTopOf="@id/bottomNav">
+        <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <!-- Header: SUR in white, AKSHA in red -->
+            <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content"
+                android:orientation="horizontal" android:padding="20dp" android:gravity="center_vertical">
+                <LinearLayout android:layout_width="0dp" android:layout_height="wrap_content"
+                    android:layout_weight="1" android:orientation="vertical">
+                    <LinearLayout android:layout_width="wrap_content" android:layout_height="wrap_content"
+                        android:orientation="horizontal">
+                        <TextView android:layout_width="wrap_content" android:layout_height="wrap_content"
+                            android:text="SURA" android:textSize="28sp" android:textStyle="bold"
+                            android:textColor="#ffffff" android:letterSpacing="0.12"/>
+                        <TextView android:layout_width="wrap_content" android:layout_height="wrap_content"
+                            android:text="KSHA" android:textSize="28sp" android:textStyle="bold"
+                            android:textColor="#ff3333" android:letterSpacing="0.12"/>
+                    </LinearLayout>
+                    <TextView android:layout_width="wrap_content" android:layout_height="wrap_content"
+                        android:text="Your personal safety shield"
+                        android:textSize="13sp" android:textColor="#555"/>
+                </LinearLayout>
+                <!-- Shield SVG icon -->
+                <LinearLayout android:layout_width="44dp" android:layout_height="44dp"
+                    android:background="#1a0000" android:gravity="center">
+                    <ImageView android:layout_width="24dp" android:layout_height="24dp"
+                        android:src="@drawable/ic_shield"/>
+                </LinearLayout>
+            </LinearLayout>
+
+            <!-- Status bar -->
+            <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content"
+                android:orientation="horizontal" android:background="#0f0f0f"
+                android:layout_marginHorizontal="16dp" android:padding="13dp"
+                android:gravity="center_vertical">
+                <View android:id="@+id/statusDot" android:layout_width="8dp" android:layout_height="8dp"
+                    android:background="@drawable/circle_green"/>
+                <LinearLayout android:layout_width="0dp" android:layout_height="wrap_content"
+                    android:layout_weight="1" android:orientation="vertical" android:layout_marginStart="10dp">
+                    <TextView android:id="@+id/statusText"
+                        android:layout_width="wrap_content" android:layout_height="wrap_content"
+                        android:text="Getting your location..."
+                        android:textSize="14sp" android:textColor="#ccc"/>
+                    <TextView android:layout_width="wrap_content" android:layout_height="wrap_content"
+                        android:text="Suraksha is active and monitoring"
+                        android:textSize="11sp" android:textColor="#444"/>
+                </LinearLayout>
+                <TextView android:layout_width="wrap_content" android:layout_height="wrap_content"
+                    android:text="LIVE" android:textSize="10sp" android:textColor="#22c55e"
+                    android:background="#0f2010" android:paddingHorizontal="8dp" android:paddingVertical="4dp"/>
+            </LinearLayout>
+
+            <!-- SOS Button area -->
+            <FrameLayout android:layout_width="match_parent" android:layout_height="290dp"
+                android:gravity="center">
+                <View android:layout_width="252dp" android:layout_height="252dp"
+                    android:layout_gravity="center" android:background="@drawable/ring_outer"/>
+                <View android:layout_width="212dp" android:layout_height="212dp"
+                    android:layout_gravity="center" android:background="@drawable/ring_middle"/>
+                <com.google.android.material.progressindicator.CircularProgressIndicator
+                    android:id="@+id/sosProgressRing"
+                    android:layout_width="186dp" android:layout_height="186dp"
+                    android:layout_gravity="center"
+                    app:indicatorColor="#ff3333" app:trackColor="#1a1a1a"
+                    app:trackThickness="3dp" android:progress="0"/>
+                <!-- Round SOS button using shape background -->
+                <LinearLayout android:layout_width="156dp" android:layout_height="156dp"
+                    android:layout_gravity="center" android:gravity="center"
+                    android:orientation="vertical" android:background="@drawable/sos_circle"
+                    android:elevation="8dp">
+                    <androidx.appcompat.widget.AppCompatButton
+                        android:id="@+id/sosButton"
+                        android:layout_width="156dp" android:layout_height="156dp"
+                        android:background="@android:color/transparent"
+                        android:text="" android:stateListAnimator="@null"
+                        android:elevation="0dp"/>
+                </LinearLayout>
+                <LinearLayout android:layout_width="wrap_content" android:layout_height="wrap_content"
+                    android:layout_gravity="center" android:orientation="vertical"
+                    android:gravity="center" android:elevation="9dp">
+                    <TextView android:id="@+id/sosLabel"
+                        android:layout_width="wrap_content" android:layout_height="wrap_content"
+                        android:text="SOS" android:textSize="40sp" android:textStyle="bold"
+                        android:textColor="#ffffff" android:letterSpacing="0.2"
+                        android:clickable="false" android:focusable="false"/>
+                    <TextView android:layout_width="wrap_content" android:layout_height="wrap_content"
+                        android:text="HOLD 3 SEC" android:textSize="10sp"
+                        android:textColor="#ffffff99"
+                        android:clickable="false" android:focusable="false"/>
+                </LinearLayout>
+            </FrameLayout>
+
+            <!-- Trigger hints -->
+            <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content"
+                android:orientation="horizontal" android:gravity="center"
+                android:layout_marginBottom="20dp" android:layout_marginTop="-10dp"
+                android:paddingHorizontal="16dp">
+                <ImageView android:layout_width="16dp" android:layout_height="16dp"
+                    android:src="@drawable/ic_volume" android:layout_marginEnd="6dp"/>
+                <TextView android:layout_width="wrap_content" android:layout_height="wrap_content"
+                    android:text="Volume btn" android:textSize="12sp" android:textColor="#444"/>
+                <TextView android:layout_width="wrap_content" android:layout_height="wrap_content"
+                    android:text="  •  " android:textSize="12sp" android:textColor="#333"/>
+                <ImageView android:layout_width="16dp" android:layout_height="16dp"
+                    android:src="@drawable/ic_shake" android:layout_marginEnd="6dp"/>
+                <TextView android:layout_width="wrap_content" android:layout_height="wrap_content"
+                    android:text="Shake 3x" android:textSize="12sp" android:textColor="#444"/>
+                <TextView android:layout_width="wrap_content" android:layout_height="wrap_content"
+                    android:text="  •  " android:textSize="12sp" android:textColor="#333"/>
+                <ImageView android:layout_width="16dp" android:layout_height="16dp"
+                    android:src="@drawable/ic_timer" android:layout_marginEnd="6dp"/>
+                <TextView android:layout_width="wrap_content" android:layout_height="wrap_content"
+                    android:text="Hold 3s" android:textSize="12sp" android:textColor="#444"/>
+            </LinearLayout>
+
+            <!-- Quick actions label -->
+            <TextView android:layout_width="match_parent" android:layout_height="wrap_content"
+                android:text="QUICK ACTIONS" android:textSize="11sp" android:textColor="#333"
+                android:letterSpacing="0.1" android:paddingHorizontal="16dp"
+                android:layout_marginBottom="10dp"/>
+
+            <!-- Quick actions grid -->
+            <GridLayout android:layout_width="match_parent" android:layout_height="wrap_content"
+                android:columnCount="2" android:layout_marginHorizontal="12dp"
+                android:layout_marginBottom="16dp">
+                <LinearLayout android:id="@+id/btnShareLocation"
+                    android:layout_width="0dp" android:layout_height="88dp"
+                    android:layout_columnWeight="1" android:layout_margin="4dp"
+                    android:background="#0f0f0f" android:orientation="vertical" android:gravity="center">
+                    <ImageView android:layout_width="28dp" android:layout_height="28dp"
+                        android:src="@drawable/ic_location" android:layout_marginBottom="6dp"/>
+                    <TextView android:layout_width="wrap_content" android:layout_height="wrap_content"
+                        android:text="Share Location" android:textSize="14sp"
+                        android:textColor="#ccc" android:gravity="center"/>
+                    <TextView android:layout_width="wrap_content" android:layout_height="wrap_content"
+                        android:text="Send via SMS" android:textSize="11sp"
+                        android:textColor="#444" android:gravity="center"/>
+                </LinearLayout>
+                <LinearLayout android:id="@+id/btnFakeCall"
+                    android:layout_width="0dp" android:layout_height="88dp"
+                    android:layout_columnWeight="1" android:layout_margin="4dp"
+                    android:background="#0f0f0f" android:orientation="vertical" android:gravity="center">
+                    <ImageView android:layout_width="28dp" android:layout_height="28dp"
+                        android:src="@drawable/ic_phone" android:layout_marginBottom="6dp"/>
+                    <TextView android:layout_width="wrap_content" android:layout_height="wrap_content"
+                        android:text="Fake Call" android:textSize="14sp"
+                        android:textColor="#ccc" android:gravity="center"/>
+                    <TextView android:layout_width="wrap_content" android:layout_height="wrap_content"
+                        android:text="Escape situations" android:textSize="11sp"
+                        android:textColor="#444" android:gravity="center"/>
+                </LinearLayout>
+            </GridLayout>
+        </LinearLayout>
+    </ScrollView>
+
+    <!-- ══════════════ ALERT SCREEN ══════════════ -->
+    <ScrollView android:id="@+id/screenAlert"
+        android:layout_width="match_parent" android:layout_height="0dp"
+        android:visibility="gone" android:background="#080808" android:paddingBottom="72dp"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toTopOf="@id/bottomNav">
+        <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <!-- Alert header -->
+            <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content"
+                android:background="#1a0000" android:padding="20dp"
+                android:orientation="horizontal" android:gravity="center_vertical">
+                <View android:layout_width="12dp" android:layout_height="12dp"
+                    android:background="@drawable/circle_red" android:layout_marginEnd="12dp"/>
+                <LinearLayout android:layout_width="0dp" android:layout_height="wrap_content"
+                    android:layout_weight="1" android:orientation="vertical">
+                    <TextView android:layout_width="wrap_content" android:layout_height="wrap_content"
+                        android:text="SOS ALERT SENT" android:textSize="20sp"
+                        android:textStyle="bold" android:textColor="#ff6b6b"/>
+                    <TextView android:layout_width="wrap_content" android:layout_height="wrap_content"
+                        android:text="Notifying contacts and nearby helpers..."
+                        android:textSize="13sp" android:textColor="#ff4b4b"/>
+                </LinearLayout>
+                <TextView android:layout_width="wrap_content" android:layout_height="wrap_content"
+                    android:text="ACTIVE" android:textSize="10sp" android:textColor="#ff4b4b"
+                    android:background="#2d0000" android:paddingHorizontal="10dp" android:paddingVertical="5dp"/>
+            </LinearLayout>
+
+            <!-- Map location card -->
+            <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content"
+                android:background="#0d1520" android:padding="18dp" android:orientation="vertical">
+                <TextView android:layout_width="wrap_content" android:layout_height="wrap_content"
+                    android:text="YOUR LIVE LOCATION" android:textSize="11sp"
+                    android:textColor="#2a4a6a" android:letterSpacing="0.08"
+                    android:layout_marginBottom="10dp"/>
+                <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content"
+                    android:orientation="horizontal" android:gravity="center_vertical">
+                    <ImageView android:layout_width="22dp" android:layout_height="22dp"
+                        android:src="@drawable/ic_location" android:layout_marginEnd="10dp"/>
+                    <TextView android:id="@+id/mapLink"
+                        android:layout_width="0dp" android:layout_height="wrap_content"
+                        android:layout_weight="1" android:text="Getting location..."
+                        android:textSize="14sp" android:textColor="#4da6ff"/>
+                </LinearLayout>
+                <TextView android:layout_width="wrap_content" android:layout_height="wrap_content"
+                    android:text="Updates every 30 seconds — tap to open in Maps"
+                    android:textSize="11sp" android:textColor="#2a4a6a" android:layout_marginTop="8dp"/>
+            </LinearLayout>
+
+            <!-- Contacts notified -->
+            <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content"
+                android:orientation="vertical" android:padding="18dp">
+                <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content"
+                    android:orientation="horizontal" android:gravity="center_vertical"
+                    android:layout_marginBottom="14dp">
+                    <TextView android:layout_width="0dp" android:layout_height="wrap_content"
+                        android:layout_weight="1" android:text="CONTACTS NOTIFIED"
+                        android:textSize="11sp" android:textColor="#444" android:letterSpacing="0.08"/>
+                    <TextView android:layout_width="wrap_content" android:layout_height="wrap_content"
+                        android:text="SMS + Location sent" android:textSize="11sp"
+                        android:textColor="#22c55e"/>
+                </LinearLayout>
+                <LinearLayout android:id="@+id/alertContactsList"
+                    android:layout_width="match_parent" android:layout_height="wrap_content"
+                    android:orientation="vertical"/>
+            </LinearLayout>
+
+            <!-- Nearby helpers — transparent bg -->
+            <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content"
+                android:layout_marginHorizontal="18dp" android:padding="16dp"
+                android:orientation="horizontal" android:gravity="center_vertical"
+                android:layout_marginBottom="14dp">
+                <ImageView android:layout_width="28dp" android:layout_height="28dp"
+                    android:src="@drawable/ic_people" android:layout_marginEnd="14dp"/>
+                <LinearLayout android:layout_width="0dp" android:layout_height="wrap_content"
+                    android:layout_weight="1" android:orientation="vertical">
+                    <TextView android:layout_width="wrap_content" android:layout_height="wrap_content"
+                        android:text="Alerting helpers within 1km"
+                        android:textSize="15sp" android:textStyle="bold" android:textColor="#4ade80"/>
+                    <TextView android:layout_width="wrap_content" android:layout_height="wrap_content"
+                        android:text="Community members are being notified"
+                        android:textSize="12sp" android:textColor="#555"/>
+                </LinearLayout>
+            </LinearLayout>
+
+
+            <!-- Nearby Safe Places button -->
+            <Button
+                android:layout_width="match_parent"
+                android:layout_height="52dp"
+                android:layout_marginHorizontal="18dp"
+                android:layout_marginBottom="10dp"
+                android:text="Find Nearby Safe Places"
+                android:backgroundTint="#0d1520"
+                android:textColor="#4da6ff"
+                android:textSize="15sp"
+                android:onClick="findNearbyPlaces"/>
+
+            <Button android:id="@+id/cancelSosBtn"
+                android:layout_width="match_parent" android:layout_height="54dp"
+                android:layout_marginHorizontal="18dp" android:layout_marginBottom="18dp"
+                android:text="I am safe — Cancel SOS"
+                android:backgroundTint="#141414" android:textColor="#666" android:textSize="15sp"/>
+        </LinearLayout>
+    </ScrollView>
+
+    <!-- ══════════════ CONTACTS SCREEN ══════════════ -->
+    <ScrollView android:id="@+id/screenContacts"
+        android:layout_width="match_parent" android:layout_height="0dp"
+        android:visibility="gone" android:background="#080808" android:paddingBottom="72dp"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toTopOf="@id/bottomNav">
+        <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <!-- Header -->
+            <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content"
+                android:orientation="vertical" android:padding="20dp" android:background="#0f0f0f">
+                <TextView android:layout_width="wrap_content" android:layout_height="wrap_content"
+                    android:text="Trusted Contacts" android:textSize="26sp"
+                    android:textStyle="bold" android:textColor="#ffffff"/>
+                <TextView android:layout_width="wrap_content" android:layout_height="wrap_content"
+                    android:text="These people receive your SOS alert, live location and auto-call"
+                    android:textSize="14sp" android:textColor="#555" android:layout_marginTop="4dp"/>
+            </LinearLayout>
+
+            <!-- Add contact form -->
+            <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content"
+                android:orientation="vertical" android:padding="18dp" android:background="#0a0a0a">
+                <TextView android:layout_width="wrap_content" android:layout_height="wrap_content"
+                    android:text="ADD NEW CONTACT" android:textSize="11sp"
+                    android:textColor="#333" android:letterSpacing="0.08"
+                    android:layout_marginBottom="14dp"/>
+                <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content"
+                    android:orientation="horizontal" android:layout_marginBottom="12dp">
+                    <LinearLayout android:layout_width="46dp" android:layout_height="54dp"
+                        android:background="#141414" android:gravity="center" android:layout_marginEnd="8dp">
+                        <ImageView android:layout_width="22dp" android:layout_height="22dp"
+                            android:src="@drawable/ic_person"/>
+                    </LinearLayout>
+                    <EditText android:id="@+id/contactNameInput"
+                        android:layout_width="0dp" android:layout_height="54dp" android:layout_weight="1"
+                        android:hint="Full name (e.g. Amma, Nanna)"
+                        android:background="#141414" android:textColor="#e0e0e0"
+                        android:textColorHint="#444" android:paddingHorizontal="14dp" android:textSize="15sp"/>
+                </LinearLayout>
+                <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content"
+                    android:orientation="horizontal" android:layout_marginBottom="16dp">
+                    <LinearLayout android:layout_width="46dp" android:layout_height="54dp"
+                        android:background="#141414" android:gravity="center" android:layout_marginEnd="8dp">
+                        <ImageView android:layout_width="22dp" android:layout_height="22dp"
+                            android:src="@drawable/ic_phone"/>
+                    </LinearLayout>
+                    <EditText android:id="@+id/contactPhoneInput"
+                        android:layout_width="0dp" android:layout_height="54dp" android:layout_weight="1"
+                        android:hint="Phone with country code (919876543210)"
+                        android:inputType="phone" android:background="#141414"
+                        android:textColor="#e0e0e0" android:textColorHint="#444"
+                        android:paddingHorizontal="14dp" android:textSize="15sp"/>
+                </LinearLayout>
+                <Button android:id="@+id/addContactBtn"
+                    android:layout_width="match_parent" android:layout_height="54dp"
+                    android:text="Add Trusted Contact"
+                    android:backgroundTint="#ff3333" android:textColor="#fff"
+                    android:textSize="16sp" android:textStyle="bold"/>
+            </LinearLayout>
+
+            <!-- Saved contacts list -->
+            <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content"
+                android:orientation="vertical" android:padding="18dp">
+                <TextView android:layout_width="wrap_content" android:layout_height="wrap_content"
+                    android:text="YOUR CONTACTS" android:textSize="11sp"
+                    android:textColor="#333" android:letterSpacing="0.08"
+                    android:layout_marginBottom="14dp"/>
+                <LinearLayout android:id="@+id/contactsList"
+                    android:layout_width="match_parent" android:layout_height="wrap_content"
+                    android:orientation="vertical"/>
+            </LinearLayout>
+
+            <!-- Test SOS section -->
+            <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content"
+                android:background="#0a0a1a" android:padding="18dp" android:orientation="vertical"
+                android:layout_marginHorizontal="18dp" android:layout_marginBottom="20dp">
+                <TextView android:layout_width="wrap_content" android:layout_height="wrap_content"
+                    android:text="TEST YOUR SOS" android:textSize="11sp"
+                    android:textColor="#2a2a4a" android:letterSpacing="0.08"
+                    android:layout_marginBottom="8dp"/>
+                <TextView android:layout_width="wrap_content" android:layout_height="wrap_content"
+                    android:text="Send a test alert to yourself to confirm everything is working."
+                    android:textSize="13sp" android:textColor="#444" android:layout_marginBottom="14dp"/>
+                <Button android:layout_width="match_parent" android:layout_height="48dp"
+                    android:text="Send Test SMS to Myself"
+                    android:backgroundTint="#1a1a2e" android:textColor="#818cf8" android:textSize="14sp"
+                    android:onClick="sendTestSMS"/>
+            </LinearLayout>
+        </LinearLayout>
+    </ScrollView>
+
+    <!-- ══════════════ HELPER SCREEN ══════════════ -->
+    <ScrollView android:id="@+id/screenHelper"
+        android:layout_width="match_parent" android:layout_height="0dp"
+        android:visibility="gone" android:background="#080808" android:paddingBottom="72dp"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toTopOf="@id/bottomNav">
+        <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <!-- Header -->
+            <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content"
+                android:orientation="vertical" android:padding="20dp" android:background="#0f0f0f">
+                <TextView android:layout_width="wrap_content" android:layout_height="wrap_content"
+                    android:text="Helper Mode" android:textSize="26sp"
+                    android:textStyle="bold" android:textColor="#ffffff"/>
+                <TextView android:layout_width="wrap_content" android:layout_height="wrap_content"
+                    android:text="Be someone's shield in your community"
+                    android:textSize="14sp" android:textColor="#555" android:layout_marginTop="4dp"/>
+            </LinearLayout>
+
+            <!-- Toggle card -->
+            <LinearLayout android:id="@+id/helperToggleCard"
+                android:layout_width="match_parent" android:layout_height="wrap_content"
+                android:background="#0f0f0f" android:padding="20dp" android:orientation="vertical"
+                android:layout_marginHorizontal="18dp" android:layout_marginTop="18dp">
+                <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content"
+                    android:orientation="horizontal" android:gravity="center_vertical">
+                    <LinearLayout android:layout_width="0dp" android:layout_height="wrap_content"
+                        android:layout_weight="1" android:orientation="vertical">
+                        <TextView android:id="@+id/helperToggleTitle"
+                            android:layout_width="wrap_content" android:layout_height="wrap_content"
+                            android:text="I am available to help"
+                            android:textSize="17sp" android:textStyle="bold" android:textColor="#888"/>
+                        <TextView android:id="@+id/helperToggleStatus"
+                            android:layout_width="wrap_content" android:layout_height="wrap_content"
+                            android:text="Toggle on to join the helper network"
+                            android:textSize="13sp" android:textColor="#444" android:layout_marginTop="4dp"/>
+                    </LinearLayout>
+                    <Switch android:id="@+id/helperToggle"
+                        android:layout_width="wrap_content" android:layout_height="wrap_content"
+                        android:thumbTint="#666" android:trackTint="#2a2a2a"/>
+                </LinearLayout>
+                <LinearLayout android:id="@+id/helperActiveStatus"
+                    android:layout_width="match_parent" android:layout_height="wrap_content"
+                    android:orientation="horizontal" android:gravity="center_vertical"
+                    android:layout_marginTop="16dp" android:paddingTop="16dp" android:visibility="gone">
+                    <View android:layout_width="8dp" android:layout_height="8dp"
+                        android:background="@drawable/circle_green" android:layout_marginEnd="10dp"/>
+                    <TextView android:layout_width="wrap_content" android:layout_height="wrap_content"
+                        android:text="Watching 1km radius around your location"
+                        android:textSize="13sp" android:textColor="#4ade80"/>
+                </LinearLayout>
+            </LinearLayout>
+
+            <!-- What helpers can do -->
+            <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content"
+                android:background="#0a0a0a" android:padding="18dp" android:orientation="vertical"
+                android:layout_marginHorizontal="18dp" android:layout_marginTop="14dp">
+                <TextView android:layout_width="wrap_content" android:layout_height="wrap_content"
+                    android:text="AS A HELPER YOU CAN" android:textSize="11sp"
+                    android:textColor="#333" android:letterSpacing="0.08" android:layout_marginBottom="14dp"/>
+
+                <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content"
+                    android:orientation="horizontal" android:gravity="center_vertical" android:layout_marginBottom="14dp">
+                    <ImageView android:layout_width="22dp" android:layout_height="22dp"
+                        android:src="@drawable/ic_phone" android:layout_marginEnd="14dp"/>
+                    <LinearLayout android:layout_width="0dp" android:layout_height="wrap_content" android:layout_weight="1"
+                        android:orientation="vertical">
+                        <TextView android:layout_width="wrap_content" android:layout_height="wrap_content"
+                            android:text="Call the person in danger"
+                            android:textSize="15sp" android:textColor="#ccc"/>
+                        <TextView android:layout_width="wrap_content" android:layout_height="wrap_content"
+                            android:text="Speak directly to reassure them"
+                            android:textSize="12sp" android:textColor="#444"/>
+                    </LinearLayout>
+                </LinearLayout>
+
+                <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content"
+                    android:orientation="horizontal" android:gravity="center_vertical" android:layout_marginBottom="14dp">
+                    <ImageView android:layout_width="22dp" android:layout_height="22dp"
+                        android:src="@drawable/ic_location" android:layout_marginEnd="14dp"/>
+                    <LinearLayout android:layout_width="0dp" android:layout_height="wrap_content" android:layout_weight="1"
+                        android:orientation="vertical">
+                        <TextView android:layout_width="wrap_content" android:layout_height="wrap_content"
+                            android:text="Navigate to their location"
+                            android:textSize="15sp" android:textColor="#ccc"/>
+                        <TextView android:layout_width="wrap_content" android:layout_height="wrap_content"
+                            android:text="Open Maps and go to them immediately"
+                            android:textSize="12sp" android:textColor="#444"/>
+                    </LinearLayout>
+                </LinearLayout>
+
+                <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content"
+                    android:orientation="horizontal" android:gravity="center_vertical">
+                    <ImageView android:layout_width="22dp" android:layout_height="22dp"
+                        android:src="@drawable/ic_shield" android:layout_marginEnd="14dp"/>
+                    <LinearLayout android:layout_width="0dp" android:layout_height="wrap_content" android:layout_weight="1"
+                        android:orientation="vertical">
+                        <TextView android:layout_width="wrap_content" android:layout_height="wrap_content"
+                            android:text="Alert police on their behalf"
+                            android:textSize="15sp" android:textColor="#ccc"/>
+                        <TextView android:layout_width="wrap_content" android:layout_height="wrap_content"
+                            android:text="Call emergency services (100)"
+                            android:textSize="12sp" android:textColor="#444"/>
+                    </LinearLayout>
+                </LinearLayout>
+            </LinearLayout>
+
+            <!-- Incoming alert banner -->
+            <LinearLayout android:id="@+id/helperAlertBanner"
+                android:layout_width="match_parent" android:layout_height="wrap_content"
+                android:background="#1a0000" android:layout_marginHorizontal="18dp"
+                android:layout_marginTop="14dp" android:padding="18dp"
+                android:orientation="vertical" android:visibility="gone">
+                <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content"
+                    android:orientation="horizontal" android:gravity="center_vertical"
+                    android:layout_marginBottom="10dp">
+                    <View android:layout_width="8dp" android:layout_height="8dp"
+                        android:background="@drawable/circle_red" android:layout_marginEnd="10dp"/>
+                    <TextView android:layout_width="0dp" android:layout_height="wrap_content" android:layout_weight="1"
+                        android:text="EMERGENCY NEARBY" android:textSize="12sp"
+                        android:textColor="#ff4b4b" android:textStyle="bold" android:letterSpacing="0.08"/>
+                    <TextView android:layout_width="wrap_content" android:layout_height="wrap_content"
+                        android:text="Just now" android:textSize="11sp" android:textColor="#555"/>
+                </LinearLayout>
+                <TextView android:id="@+id/helperAlertMessage"
+                    android:layout_width="wrap_content" android:layout_height="wrap_content"
+                    android:text="Someone near you pressed SOS and needs help."
+                    android:textSize="14sp" android:textColor="#ffaaaa" android:layout_marginBottom="16dp"/>
+                <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+                    <Button android:id="@+id/openLocationBtn"
+                        android:layout_width="0dp" android:layout_height="46dp" android:layout_weight="1"
+                        android:text="Open Location" android:backgroundTint="#1a3a6a"
+                        android:textColor="#60a5fa" android:textSize="13sp" android:layout_marginEnd="6dp"/>
+                    <Button android:id="@+id/callPoliceBtn"
+                        android:layout_width="0dp" android:layout_height="46dp" android:layout_weight="1"
+                        android:text="Call Police 100" android:backgroundTint="#1a1a1a"
+                        android:textColor="#aaa" android:textSize="13sp" android:layout_marginStart="6dp"/>
+                </LinearLayout>
+            </LinearLayout>
+
+            <!-- Stats -->
+            <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content"
+                android:orientation="horizontal" android:layout_marginHorizontal="18dp"
+                android:layout_marginTop="14dp" android:layout_marginBottom="20dp">
+                <LinearLayout android:layout_width="0dp" android:layout_height="wrap_content"
+                    android:layout_weight="1" android:background="#0f0f0f"
+                    android:orientation="vertical" android:gravity="center"
+                    android:padding="16dp" android:layout_marginEnd="5dp">
+                    <TextView android:layout_width="wrap_content" android:layout_height="wrap_content"
+                        android:text="0" android:textSize="26sp" android:textStyle="bold"
+                        android:textColor="#4ade80"/>
+                    <TextView android:layout_width="wrap_content" android:layout_height="wrap_content"
+                        android:text="Alerts responded" android:textSize="11sp"
+                        android:textColor="#444" android:gravity="center"/>
+                </LinearLayout>
+                <LinearLayout android:layout_width="0dp" android:layout_height="wrap_content"
+                    android:layout_weight="1" android:background="#0f0f0f"
+                    android:orientation="vertical" android:gravity="center"
+                    android:padding="16dp" android:layout_marginHorizontal="5dp">
+                    <TextView android:layout_width="wrap_content" android:layout_height="wrap_content"
+                        android:text="1km" android:textSize="26sp" android:textStyle="bold"
+                        android:textColor="#4ade80"/>
+                    <TextView android:layout_width="wrap_content" android:layout_height="wrap_content"
+                        android:text="Watch radius" android:textSize="11sp"
+                        android:textColor="#444" android:gravity="center"/>
+                </LinearLayout>
+                <LinearLayout android:layout_width="0dp" android:layout_height="wrap_content"
+                    android:layout_weight="1" android:background="#0f0f0f"
+                    android:orientation="vertical" android:gravity="center"
+                    android:padding="16dp" android:layout_marginStart="5dp">
+                    <TextView android:layout_width="wrap_content" android:layout_height="wrap_content"
+                        android:text="Free" android:textSize="26sp" android:textStyle="bold"
+                        android:textColor="#4ade80"/>
+                    <TextView android:layout_width="wrap_content" android:layout_height="wrap_content"
+                        android:text="Always free" android:textSize="11sp"
+                        android:textColor="#444" android:gravity="center"/>
+                </LinearLayout>
+            </LinearLayout>
+        </LinearLayout>
+    </ScrollView>
+
+    <!-- ══════════════ BOTTOM NAV ══════════════ -->
+    <LinearLayout android:id="@+id/bottomNav"
+        android:layout_width="match_parent" android:layout_height="64dp"
+        android:orientation="horizontal" android:background="#0f0f0f"
+        android:elevation="16dp"
+        app:layout_constraintBottom_toBottomOf="parent">
+        <LinearLayout android:id="@+id/navHome" android:layout_width="0dp"
+            android:layout_height="match_parent" android:layout_weight="1"
+            android:orientation="vertical" android:gravity="center"
+            android:background="?attr/selectableItemBackground">
+            <ImageView android:layout_width="24dp" android:layout_height="24dp"
+                android:src="@drawable/ic_home"/>
+            <TextView android:layout_width="wrap_content" android:layout_height="wrap_content"
+                android:text="Home" android:textSize="11sp" android:textColor="#ff3333"
+                android:layout_marginTop="3dp"/>
+        </LinearLayout>
+        <LinearLayout android:id="@+id/navAlert" android:layout_width="0dp"
+            android:layout_height="match_parent" android:layout_weight="1"
+            android:orientation="vertical" android:gravity="center"
+            android:background="?attr/selectableItemBackground">
+            <ImageView android:layout_width="24dp" android:layout_height="24dp"
+                android:src="@drawable/ic_alert"/>
+            <TextView android:layout_width="wrap_content" android:layout_height="wrap_content"
+                android:text="Alert" android:textSize="11sp" android:textColor="#555"
+                android:layout_marginTop="3dp"/>
+        </LinearLayout>
+        <LinearLayout android:id="@+id/navContacts" android:layout_width="0dp"
+            android:layout_height="match_parent" android:layout_weight="1"
+            android:orientation="vertical" android:gravity="center"
+            android:background="?attr/selectableItemBackground">
+            <ImageView android:layout_width="24dp" android:layout_height="24dp"
+                android:src="@drawable/ic_contacts"/>
+            <TextView android:layout_width="wrap_content" android:layout_height="wrap_content"
+                android:text="Contacts" android:textSize="11sp" android:textColor="#555"
+                android:layout_marginTop="3dp"/>
+        </LinearLayout>
+        <LinearLayout android:id="@+id/navHelper" android:layout_width="0dp"
+            android:layout_height="match_parent" android:layout_weight="1"
+            android:orientation="vertical" android:gravity="center"
+            android:background="?attr/selectableItemBackground">
+            <ImageView android:layout_width="24dp" android:layout_height="24dp"
+                android:src="@drawable/ic_helper"/>
+            <TextView android:layout_width="wrap_content" android:layout_height="wrap_content"
+                android:text="Helper" android:textSize="11sp" android:textColor="#555"
+                android:layout_marginTop="3dp"/>
+        </LinearLayout>
+    </LinearLayout>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

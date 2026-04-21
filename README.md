@@ -1,4 +1,4 @@
-# Suraksha — Women Safety App 🛡️
+# Suraksha — A Women Safety App 🛡️
 
 One press sends live location, auto-calls trusted contacts & 
 alerts nearby helpers. Works without internet via SMS.

@@ -4,7 +4,7 @@ One press sends live location, auto-calls trusted contacts &
 alerts nearby helpers. Works without internet via SMS.
 
 ## Tech Stack
-- **Frontend:** Android (Java/Kotlin) — Android Studio
+- **Frontend:** Android (Java/Kotlin) - Android Studio
 - **Backend:** Firebase (Firestore, Auth, FCM, Hosting)
 - **Maps:** Google Maps SDK
 - **Offline SMS:** Android SmsManager API
